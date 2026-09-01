@@ -1,0 +1,9 @@
+vllm
+autoawq
+llmcompressor
+transformers
+datasets
+huggingface_hub
+aiohttp
+openai
+numpy

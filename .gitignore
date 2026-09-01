@@ -1,4 +1,6 @@
 .venv/
+.venv-train/
+.venv-serve/
 __pycache__/
 *.pyc
 data/toolace_processed/
