@@ -165,7 +165,7 @@ def main():
         save_total_limit=2,
         load_best_model_at_end=True,
         metric_for_best_model="eval_loss",
-        report_to=["tensorboard"],
+        report_to=[],
         seed=args.seed,
         remove_unused_columns=False,
     )
