@@ -179,6 +179,8 @@ def extract_tools(system_text):
 
     normalized = []
     for t in raw_tools:
+        if not isinstance(t, dict) or "name" not in t:
+            continue
         func = {
             "name": t["name"],
             "description": t.get("description", ""),
@@ -218,7 +220,7 @@ def convert(example):
         else:
             messages.append({"role": role, "content": value})
 
-    return {"messages": messages, "tools": tools}
+    return {"messages": json.dumps(messages), "tools": json.dumps(tools)}
 
 
 def main():

@@ -28,14 +28,16 @@ def load_prompts(data_dir, n):
     n = min(n, len(ds))
     prompts = []
     for ex in ds.select(range(n)):
+        full_messages = json.loads(ex["messages"])
+        tools = json.loads(ex["tools"]) or None
         messages = []
-        for m in ex["messages"]:
+        for m in full_messages:
             if m["role"] == "assistant":
                 break
             messages.append(m)
         if not messages or messages[-1]["role"] != "user":
             continue
-        prompts.append({"messages": messages, "tools": ex["tools"] or None})
+        prompts.append({"messages": messages, "tools": tools})
     return prompts
 
 

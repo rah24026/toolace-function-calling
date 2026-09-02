@@ -18,8 +18,8 @@ LORA_TARGETS = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", 
 
 
 def tokenize_example(example, tokenizer, max_length):
-    messages = example["messages"]
-    tools = example["tools"] or None
+    messages = json.loads(example["messages"])
+    tools = json.loads(example["tools"]) or None
 
     input_ids = []
     labels = []

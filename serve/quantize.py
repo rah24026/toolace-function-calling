@@ -17,6 +17,8 @@ def quantize_fp8(model_dir, output_dir):
 
 
 def quantize_awq(model_dir, data_dir, output_dir, num_calib_samples):
+    import json
+
     from awq import AutoAWQForCausalLM
     from datasets import load_from_disk
     from transformers import AutoTokenizer
@@ -25,7 +27,9 @@ def quantize_awq(model_dir, data_dir, output_dir, num_calib_samples):
     ds = load_from_disk(data_dir)["validation"]
     n = min(num_calib_samples, len(ds))
     calib_texts = [
-        tokenizer.apply_chat_template(ex["messages"], tools=ex["tools"] or None, tokenize=False, add_generation_prompt=False)
+        tokenizer.apply_chat_template(
+            json.loads(ex["messages"]), tools=json.loads(ex["tools"]) or None, tokenize=False, add_generation_prompt=False
+        )
         for ex in ds.select(range(n))
     ]
 
