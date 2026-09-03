@@ -47,6 +47,6 @@ export REMOTE_OPENAI_API_KEY="EMPTY"
 export REMOTE_OPENAI_TOKENIZER_PATH="${TOKENIZER_PATH}"
 
 pushd "${BFCL_ROOT}" > /dev/null
-bfcl generate --model "${REGISTRY_KEY}" --test-category python --num-threads 8
+bfcl generate --model "${REGISTRY_KEY}" --test-category python --num-threads 8 --skip-server-setup
 bfcl evaluate --model "${REGISTRY_KEY}" --test-category python
 popd > /dev/null
