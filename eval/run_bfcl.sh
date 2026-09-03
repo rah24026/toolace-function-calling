@@ -4,7 +4,8 @@ set -e
 BFCL_ROOT="$1"
 REGISTRY_KEY="$2"
 SERVED_MODEL_NAME="$3"
-BASE_URL="${4:-http://localhost:8000/v1}"
+TOKENIZER_PATH="$4"
+BASE_URL="${5:-http://localhost:8000/v1}"
 
 python3 - "$BFCL_ROOT" "$REGISTRY_KEY" "$SERVED_MODEL_NAME" <<'PYEOF'
 import re, sys
@@ -43,6 +44,7 @@ PYEOF
 
 export REMOTE_OPENAI_BASE_URL="${BASE_URL}"
 export REMOTE_OPENAI_API_KEY="EMPTY"
+export REMOTE_OPENAI_TOKENIZER_PATH="${TOKENIZER_PATH}"
 
 pushd "${BFCL_ROOT}" > /dev/null
 bfcl generate --model "${REGISTRY_KEY}" --test-category python --num-threads 8

@@ -46,7 +46,7 @@ source .venv-serve/bin/activate
 git clone https://github.com/ShishirPatil/gorilla.git ../gorilla
 cd ../gorilla/berkeley-function-call-leaderboard && pip install -e . && cd -
 
-./eval/run_bfcl.sh ../gorilla/berkeley-function-call-leaderboard qwen25-7b-toolace-FC qwen25-7b-toolace
+./eval/run_bfcl.sh ../gorilla/berkeley-function-call-leaderboard qwen25-7b-toolace-FC qwen25-7b-toolace outputs/qwen-toolace/fp8
 
 python bench/bench.py --model qwen25-7b-toolace --concurrency_levels 16 32
 ```
