@@ -10,7 +10,7 @@ vllm serve "${MODEL_DIR}" \
     --port "${PORT}" \
     --host 0.0.0.0 \
     --max-num-seqs 32 \
-    --max-model-len 8192 \
+    --max-model-len 32768 \
     --gpu-memory-utilization 0.90 \
     --enable-prefix-caching \
     --enable-chunked-prefill \
