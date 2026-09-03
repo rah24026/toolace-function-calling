@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
-BFCL_ROOT="$1"
+BFCL_ROOT="$(cd "$1" && pwd)"
 REGISTRY_KEY="$2"
 SERVED_MODEL_NAME="$3"
-TOKENIZER_PATH="$4"
+TOKENIZER_PATH="$(cd "$4" && pwd)"
 BASE_URL="${5:-http://localhost:8000/v1}"
 
 python3 - "$BFCL_ROOT" "$REGISTRY_KEY" "$SERVED_MODEL_NAME" <<'PYEOF'
