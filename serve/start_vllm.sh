@@ -13,4 +13,6 @@ vllm serve "${MODEL_DIR}" \
     --max-model-len 8192 \
     --gpu-memory-utilization 0.90 \
     --enable-prefix-caching \
-    --enable-chunked-prefill
+    --enable-chunked-prefill \
+    --enable-auto-tool-choice \
+    --tool-call-parser hermes
